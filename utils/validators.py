@@ -1,17 +1,5 @@
-"""
-Utilidades de validación
-"""
-
 def validar_cedula(cedula: str) -> tuple[bool, str]:
-    """
-    Valida que la cédula tenga formato correcto
-    
-    Args:
-        cedula: Número de cédula a validar
-        
-    Returns:
-        tuple: (es_valida, mensaje_error)
-    """
+   
     cedula = cedula.strip()
     
     if not cedula:

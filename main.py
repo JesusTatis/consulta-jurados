@@ -1,6 +1,3 @@
-"""
-Punto de entrada principal de la aplicación
-"""
 import sys
 import os
 
@@ -20,14 +17,13 @@ from models.results import ConsultaResult
 from config.settings import URL_CONSULTA, RECAPTCHA_SITEKEY
 
 class ConsultaJuradosApp:
-    """Aplicación principal de consulta de jurados"""
     
     def __init__(self):
         self.captcha_solver = CaptchaSolver()
         self.selenium_service = None
     
     def ejecutar(self):
-        """Ejecuta la aplicación principal"""
+
         try:
             imprimir_banner()
             
@@ -58,7 +54,7 @@ class ConsultaJuradosApp:
                 self.selenium_service.cerrar_navegador()
     
     def _verificar_dependencias(self) -> bool:
-        """Verifica que todas las dependencias estén disponibles"""
+
         print(f"{Color.OKCYAN}Verificando dependencias...{Color.ENDC}")
         
         # Verificar API key de Anti-Captcha
@@ -74,7 +70,7 @@ class ConsultaJuradosApp:
         return True
     
     def _solicitar_cedula(self) -> str:
-        """Solicita y valida la cédula del usuario"""
+
         intentos = 0
         max_intentos = 3
         
@@ -102,15 +98,7 @@ class ConsultaJuradosApp:
         return None
     
     def _realizar_consulta(self, cedula: str) -> ConsultaResult:
-        """
-        Realiza la consulta de la cédula
-        
-        Args:
-            cedula: Número de cédula a consultar
-            
-        Returns:
-            ConsultaResult: Resultado de la consulta
-        """
+
         print(f"\n{Color.HEADER}{'='*70}")
         print(f"INICIANDO CONSULTA PARA: {cedula}")
         print(f"{'='*70}{Color.ENDC}\n")
@@ -168,16 +156,7 @@ class ConsultaJuradosApp:
             )
     
     def _analizar_resultado(self, cedula: str, texto: str) -> ConsultaResult:
-        """
-        Analiza el texto del resultado y determina el estado
-        
-        Args:
-            cedula: Cédula consultada
-            texto: Texto del resultado
-            
-        Returns:
-            ConsultaResult: Resultado analizado
-        """
+      
         if not texto:
             return ConsultaResult(
                 exito=False,
@@ -217,7 +196,7 @@ class ConsultaJuradosApp:
             )
     
     def _mostrar_resultado(self, resultado: ConsultaResult):
-        """Muestra el resultado formateado"""
+
         print(f"\n{Color.HEADER}{'='*70}")
         print("RESULTADO DE LA CONSULTA")
         print(f"{'='*70}{Color.ENDC}\n")
@@ -246,7 +225,7 @@ class ConsultaJuradosApp:
         print(f"\n{Color.HEADER}{'='*70}{Color.ENDC}\n")
     
     def _preguntar_continuar(self) -> bool:
-        """Pregunta al usuario si desea continuar"""
+
         while True:
             respuesta = solicitar_entrada(
                 "¿Desea realizar otra consulta? (S/N): "
@@ -260,7 +239,7 @@ class ConsultaJuradosApp:
                 print(f"{Color.WARNING}Por favor responda SÍ o NO{Color.ENDC}")
 
 def main():
-    """Función principal"""
+
     app = ConsultaJuradosApp()
     app.ejecutar()
 

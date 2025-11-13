@@ -1,6 +1,3 @@
-"""
-Servicio para resolver reCAPTCHA
-"""
 import time
 from anticaptchaofficial.recaptchav2proxyless import recaptchaV2Proxyless
 
@@ -8,14 +5,12 @@ from config.settings import ANTICAPTCHA_KEY
 from utils.console_utils import Color
 
 class CaptchaSolver:
-    """Manejador de resolución de reCAPTCHA"""
     
     def __init__(self):
         self.api_key = ANTICAPTCHA_KEY
         self.disponible = self._verificar_disponibilidad()
     
     def _verificar_disponibilidad(self) -> bool:
-        """Verifica que la librería esté disponible"""
         try:
             from anticaptchaofficial.recaptchav2proxyless import recaptchaV2Proxyless
             return True
@@ -24,7 +19,7 @@ class CaptchaSolver:
             return False
     
     def verificar_api_key(self) -> bool:
-        """Verifica que la API key sea válida y tenga saldo"""
+
         if not self.disponible:
             return False
             
@@ -49,16 +44,7 @@ class CaptchaSolver:
             return False
     
     def resolver_recaptcha(self, url: str, sitekey: str) -> str:
-        """
-        Resuelve un reCAPTCHA v2
         
-        Args:
-            url: URL donde está el reCAPTCHA
-            sitekey: Site key del reCAPTCHA
-            
-        Returns:
-            str: Token de respuesta o None si hay error
-        """
         if not self.disponible:
             return None
             

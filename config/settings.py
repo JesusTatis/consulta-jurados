@@ -1,6 +1,3 @@
-"""
-Configuración del proyecto
-"""
 
 # Configuración de API
 ANTICAPTCHA_KEY = "d057f1ebb8c4334baf6441dffb519a10"

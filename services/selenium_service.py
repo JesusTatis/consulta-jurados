@@ -1,6 +1,4 @@
-"""
-Servicio para manejar Selenium
-"""
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -13,7 +11,6 @@ from config.settings import SELENIUM_TIMEOUT, WAIT_TIME
 from utils.console_utils import Color
 
 class SeleniumService:
-    """Servicio para manejar el navegador Selenium"""
     
     def __init__(self, headless: bool = False):
         self.headless = headless
@@ -21,12 +18,7 @@ class SeleniumService:
         self.wait = None
     
     def iniciar_navegador(self) -> bool:
-        """
-        Inicia el navegador Chrome
-        
-        Returns:
-            bool: True si se inició correctamente
-        """
+ 
         try:
             print(f"{Color.OKCYAN}Iniciando navegador...{Color.ENDC}")
             
@@ -56,15 +48,7 @@ class SeleniumService:
             return False
     
     def cargar_pagina(self, url: str) -> bool:
-        """
-        Carga una página web
-        
-        Args:
-            url: URL a cargar
-            
-        Returns:
-            bool: True si se cargó correctamente
-        """
+       
         try:
             print(f"{Color.OKCYAN}Cargando página...{Color.ENDC}")
             self.driver.get(url)
@@ -76,15 +60,7 @@ class SeleniumService:
             return False
     
     def ingresar_cedula(self, cedula: str) -> bool:
-        """
-        Ingresa la cédula en el campo correspondiente
-        
-        Args:
-            cedula: Número de cédula
-            
-        Returns:
-            bool: True si se ingresó correctamente
-        """
+
         try:
             campo_cedula = self.wait.until(
                 EC.presence_of_element_located((By.NAME, "cedula"))
@@ -98,15 +74,7 @@ class SeleniumService:
             return False
     
     def inyectar_solucion_captcha(self, token: str) -> bool:
-        """
-        Inyecta la solución del captcha en la página
-        
-        Args:
-            token: Token de solución del reCAPTCHA
-            
-        Returns:
-            bool: True si se inyectó correctamente
-        """
+    
         try:
             # Intentar múltiples métodos para inyectar el token
             scripts = [
@@ -128,12 +96,7 @@ class SeleniumService:
             return False
     
     def enviar_formulario(self) -> bool:
-        """
-        Envía el formulario de consulta
-        
-        Returns:
-            bool: True si se envió correctamente
-        """
+    
         try:
             boton_consultar = self.wait.until(
                 EC.element_to_be_clickable((By.NAME, "b_consulta"))
@@ -149,12 +112,7 @@ class SeleniumService:
             return False
     
     def obtener_resultado(self) -> str:
-        """
-        Obtiene el texto del resultado de la consulta
-        
-        Returns:
-            str: Texto del resultado
-        """
+
         try:
             # Intentar encontrar el div específico de resultados
             resultado_div = self.wait.until(
@@ -169,7 +127,7 @@ class SeleniumService:
                 return ""
     
     def tomar_screenshot(self, nombre_archivo: str = "screenshot.png"):
-        """Toma un screenshot de la página actual"""
+
         try:
             self.driver.save_screenshot(nombre_archivo)
             print(f"{Color.WARNING}Screenshot guardado: {nombre_archivo}{Color.ENDC}")
@@ -177,7 +135,7 @@ class SeleniumService:
             print(f"{Color.FAIL}Error tomando screenshot: {e}{Color.ENDC}")
     
     def cerrar_navegador(self):
-        """Cierra el navegador"""
+    
         if self.driver:
             self.driver.quit()
             print(f"{Color.OKCYAN}Navegador cerrado{Color.ENDC}")
