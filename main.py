@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Agregar el directorio actual al path de Python
 sys.path.append(os.path.dirname(__file__))
 
 from utils.console_utils import (
