@@ -84,7 +84,6 @@ class ConsultaJuradosApp:
             else:
                 print(f"{Color.WARNING}Consulta cancelada.{Color.ENDC}")
                 intentos += 1
-        
         print(f"{Color.FAIL}Máximo de intentos alcanzado.{Color.ENDC}")
         return None
     
