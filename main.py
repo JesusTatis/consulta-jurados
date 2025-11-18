@@ -1,14 +1,6 @@
-import sys
-import os
-
+import sys, os
 sys.path.append(os.path.dirname(__file__))
-
-from utils.console_utils import (
-    imprimir_banner, 
-    solicitar_entrada, 
-    confirmar_accion,
-    Color
-)
+from utils.console_utils import imprimir_banner, solicitar_entrada, confirmar_accion, Color
 from utils.validators import validar_cedula
 from services.captcha_solver import CaptchaSolver
 from services.selenium_service import SeleniumService
