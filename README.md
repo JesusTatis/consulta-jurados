@@ -2,6 +2,15 @@
 
 Script automatizado para consultar si una cédula está registrada como jurado de votación en la Registraduría Nacional del Estado Civil de Colombia.
 
+## 👥 Integrantes del Proyecto
+
+1. Jesús Tatis
+2. Fabio Vanegas  
+3. Jorge Borrero
+4. Roys Simarra
+5. Mariano Trocha
+6. Jorge Meza
+
 ## ✨ Características
 - Consulta automatizada en el portal oficial de la Registraduría
 - Resolución automática de reCAPTCHA usando Anti-Captcha
