@@ -19,7 +19,7 @@ Script automatizado para consultar si una cédula está registrada como jurado d
 ## 🚀 Instalación Rápida
 ```bash
 # Clonar o descargar el proyecto
-git clone <url-del-repositorio>
+git clone https://github.com/JesusTatis/consulta-jurados.git
 cd consulta-jurados
 
 # Crear entorno virtual
